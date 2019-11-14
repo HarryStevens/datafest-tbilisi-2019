@@ -1,0 +1,226 @@
+body {
+  margin: 50px auto;
+  max-width: 800px;
+}
+
+.headline {
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Helvetica Neue", sans-serif;
+  text-align: center;
+  margin-bottom: 15px;  
+}
+
+.shape {
+  stroke: #fff;
+  transition: fill 1s;
+}
+.stack-rect {
+  stroke-width: 0px;
+  stroke: black;
+}
+.stack-rect.active {
+  stroke-width: 3px;
+}
+.stack-line {
+  stroke: white;
+  stroke-opacity: .9;
+  stroke-width: 2px;
+  pointer-events: none;
+}
+.stack-outline {
+  fill: none;
+  pointer-events: none;
+  stroke-width: 3px;
+}
+.stack-label {
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s;
+}
+.stack-label.show {
+  opacity: 1;
+}
+
+.shape.asia, .stack-rect.asia {
+  fill: #e78ac3;
+}
+.shape.africa, .stack-rect.africa {
+  fill: #8da0cb;
+}
+.shape.europe, .stack-rect.europe {
+  fill: #fc8d62;
+}
+.shape.n-america, .stack-rect.n-america {
+  fill: #66c2a5;
+}
+.shape.s-america, .stack-rect.s-america {
+  fill: #ffd92f;
+}
+.shape.oceania, .stack-rect.oceania {
+  fill: #a6d854;
+}
+.shape.no-color {
+  fill: steelblue;
+}
+
+.stack-outline.asia {
+  stroke: #7f1a58;
+}
+.stack-outline.africa {
+  stroke: #304169;
+}
+.stack-outline.europe {
+  stroke: #962d03;
+}
+.stack-outline.n-america {
+  stroke: #2c6d5a;
+}
+.stack-outline.s-america {
+  stroke: #997d00;
+}
+.stack-outline.oceania {
+  stroke: #587d1c;
+}
+
+text {
+  opacity: 1;
+  transition: opacity 1s;
+}
+text.hiding {
+  opacity: 0;
+}
+text.bg {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-opacity: .7;
+  stroke-width: 6px;
+}
+.label {
+  font-family: "Helvetica Neue", sans-serif;
+  text-anchor: middle;
+}
+.label text {
+  font-weight: bold;
+  transition: fill 1s;
+}
+.label.asia.color text.fg {
+  fill: #7f1a58;
+}
+.label.africa.color text.fg {
+  fill: #304169;
+}
+.label.europe.color text.fg {
+  fill: #962d03;
+}
+.label.n-america.color text.fg {
+  fill: #2c6d5a;
+}
+.label.s-america.color text.fg {
+  fill: #997d00;
+}
+.label.oceania.color text.fg {
+  fill: #587d1c;
+}
+
+
+
+
+
+.value {
+  font-family: "Helvetica Neue", sans-serif;
+  text-anchor: middle;
+}
+
+circle {
+  fill: #fff;
+  pointer-events: none;
+}
+
+.inputs-wrapper {
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.inputs-wrapper input {
+  margin-right: 5px;
+  margin-top: -2px;
+}
+
+.source {
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.tooltip {
+  background: rgba(255, 255, 255, .98);
+  border: 1px solid #aaa;
+  font-family: "Helvetica Neue", sans-serif;
+  max-width: 180px;
+  opacity: 0;
+  padding: 8px;
+  pointer-events: none;
+  position: absolute;
+}
+.tooltip:before {
+  content:'';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -11px;
+  width: 0;
+  height: 0;
+  border-top: solid 11px #aaa;
+  border-left: solid 11px transparent;
+  border-right: solid 11px transparent;
+}
+.tooltip:after {
+  content:'';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -10px;
+  width: 0;
+  height: 0;
+  border-top: solid 10px #fff;
+  border-left: solid 10px transparent;
+  border-right: solid 10px transparent;
+}
+.tooltip.active {
+  opacity: 1;
+}
+.tooltip .country {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.tooltip .country.asia {
+  color: #7f1a58;
+}
+.tooltip .country.africa {
+  color: #304169;
+}
+.tooltip .country.europe {
+  color: #962d03;
+}
+.tooltip .country.n-america {
+  color: #2c6d5a;
+}
+.tooltip .country.s-america {
+  color: #997d00;
+}
+.tooltip .country.oceania {
+  color: #587d1c;
+}
+.tooltip .label {
+  color: #444;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}

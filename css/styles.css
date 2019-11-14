@@ -1,0 +1,65 @@
+body {
+	margin: 0;
+	font-family: "Helvetica Neue", sans-serif;
+}
+
+
+.circle {
+	stroke: #fff;
+}
+
+.dropdown-wrapper {
+	position: absolute;
+	background: rgba(255, 255, 255, .8);
+	opacity: 0;
+	transition: opacity .3s;
+	width: 100%;
+}
+.dropdown-section {
+	width: 50%;
+}
+.dropdown-section.dropdown-left {
+	float: left;
+}
+.dropdown-section.dropdown-right {
+	text-align: right;
+	float: right;
+}
+.dropdown-container {
+	display: inline-block;
+	text-align: center;
+	padding: 5px;
+	margin-right: 20px;
+}
+.dropdown-container.disabled {
+	color: #ccc;
+}
+.dropdown-container .name {
+	padding: 2px;
+	font-size: .9em;
+	border-bottom: 1px solid black;
+	margin-bottom: 4px;
+}
+.dropdown-container.disabled .name {
+	border-bottom: 1px solid #ccc;
+}
+.dropdown-container input {
+	margin-right: 5px;
+}
+.dropdown-container .radio-option {
+	font-size: .75em;
+}
+
+.axis .domain {
+	display: none;
+}
+.axis .tick line {
+	display: none;
+}
+.axis .tick text {
+	font-size: 1.2em;
+}
+
+select:disabled, select:disabled > option {
+	color: #ccc;
+}
