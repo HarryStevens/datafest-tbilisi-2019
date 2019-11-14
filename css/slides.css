@@ -1,6 +1,6 @@
 body {
 	margin: 0;
-	font-family: "Helvetica Neue", sans-serif;
+	font-family: "Georgia", serif;
 	/*font-weight: 300;*/
 }
 div {
@@ -20,9 +20,9 @@ div {
 	margin-bottom: 2px;
 }
 .slide-title {
-	margin-top: 50px;
+	margin-top: 10px;
 	font-size: 3em;
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 }
 .slide-panel {
 	float: left;

@@ -57,7 +57,7 @@ const yAxis = g.append("g")
     .attr("transform", "translate(" + width + ")")
     .call(yAxisGenerator);
 
-d3.json("data/populations-tidy.json", (err, data) => {
+d3.json("data/populations-tidy.json").then(data => {
   const shapes = g.selectAll(".shape")
       .data(data, d => d.year + d.country)
     .enter().append("path")

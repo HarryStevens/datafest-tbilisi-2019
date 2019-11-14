@@ -33,6 +33,20 @@ var dimension_options = {
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 var context = new AudioContext()
 
+function makeDistortionCurve(amount) {
+  var k = typeof amount === 'number' ? amount : 50,
+    n_samples = 44100,
+    curve = new Float32Array(n_samples),
+    deg = Math.PI / 180,
+    i = 0,
+    x;
+  for ( ; i < n_samples; ++i ) {
+    x = i * 2 / n_samples - 1;
+    curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
+  }
+  return curve;
+};
+
 // an empty array for storing currently playing notes
 var currNotes =  [];
 
@@ -47,6 +61,9 @@ dimension_options.off.data.forEach((d, i) => {
 
   d.oscillator = null;
   d.gain = null;
+  
+  d.distortionGain = null;
+  d.distortion = null;
 
   return d;
 });
@@ -65,8 +82,12 @@ var svg = d3.select("#display-3d").append("svg").attr("width", width).attr("heig
 var size_range_max = height;
 var scale_size = d3.scaleLinear().range([0, size_range_max]).domain([0, 1200]);
 
-console.log(d3.interpolatePiYG(0))
-var scale_color = d3.scaleSequential(d3.interpolatePiYG).domain(d3.extent(dimension_options.off.data, d => d[color_data_value]))
+// var scale_color = d3.scaleSequential(d3.interpolatePlasma)
+//     .domain(d3.extent(dimension_options.off.data, d => d[color_data_value]))
+
+var scale_color = d3.scaleLinear()
+    .range(["tomato", "steelblue"])
+    .domain(d3.extent(dimension_options.off.data, d => d[color_data_value]))
 
 
 // .interpolate(d3.interpolateLab);
@@ -113,10 +134,14 @@ d3.select(document).on("keypress", () => {
 
     });
 
+    
     // create an oscillator and gain, and start the oscillator
     dimension_options.off.data[pressedNote_indx].oscillator = context.createOscillator();
     dimension_options.off.data[pressedNote_indx].oscillator.frequency.value = pressedNote.frequency;
+
     dimension_options.off.data[pressedNote_indx].gain = context.createGain();
+    dimension_options.off.data[pressedNote_indx].gain.gain.setValueAtTime(0.1, context.currentTime); // low gain for smoother sound
+    
     dimension_options.off.data[pressedNote_indx].oscillator.connect(dimension_options.off.data[pressedNote_indx].gain);
     dimension_options.off.data[pressedNote_indx].gain.connect(context.destination);
 
@@ -128,7 +153,7 @@ d3.select(document).on("keypress", () => {
   }
 
 }).on("keyup", () => {
-  
+
   var pressedNote = getPressedNote(d3.event.key);
   var pressedNote_indx = dimension_options.off.data.indexOf(pressedNote);
 

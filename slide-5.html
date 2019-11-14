@@ -2,37 +2,35 @@
 <html>
 <head>
   <link rel="stylesheet" href="css/buttons.css" />
-  <link rel="stylesheet" href="css/pie-to-bar.css" />
+  <link rel="stylesheet" href="css/bar-to-line.css" />
 </head>
 <body>
-  <div class="inputs-wrapper">
-    <div>
-      <input class="hide-text" type="checkbox" />Hide values
-    </div>
-    <div>
-      <input class="remove-color" type="checkbox" />Remove color
-    </div>
-  </div>
-  <div class="headline">World population by continent, July 2019</div>
+  <div class="headline">Population, 1960 to 2017</div>
   <div class="button-wrapper">
-    <div class="button pie active" data-active="1" data-chart="pie">Pie</div>
-    <div class="button bar inactive" data-active="0" data-chart="bar">Bar</div>
-    <div class="button stack inactive" data-active="0" data-chart="stack">Stack</div>
-    <div class="button treemap inactive" data-active="0" data-chart="treemap">Treemap</div>
+    <div class="button bar active" data-active="1" data-chart="bar">Bar</div>
+    <div class="button line inactive" data-active="0" data-chart="line">Line</div>
+  </div>
+  
+  <div class="legend-wrapper">
+    <div class="legend-item japan">
+      <div class="legend-swatch"></div>
+      <div class="legend-text">Japan</div>
+    </div>
+    <div class="legend-item germany">
+      <div class="legend-swatch"></div>
+      <div class="legend-text">Germany</div>
+    </div>
+    <div class="legend-item nigeria">
+      <div class="legend-swatch"></div>
+      <div class="legend-text">Nigeria</div>
+    </div>
   </div>
   <div class="chart"></div>
-  <div class="source">Source: Wikipedia</div>
-  <div class="tooltip">
-    <div class="country"></div>
-    <div class="label">Population</div>
-    <div class="population"></div>
-  </div>
   <script src="lib/d3.min.js"></script>
-  <script src="lib/geometric.min.js"></script>
-  <script src="lib/jeezy.min.js"></script>
   <script src="lib/shape2path.v3.min.js"></script>
+  <script src="lib/jeezy.min.js"></script>
   <script src="lib/flubber.min.js"></script>
-  <script src="lib/arraygeous.min.js"></script>
-  <script src="js/pie-to-bar.js"></script>
+  <script src="lib/geometric.min.js"></script>
+  <script src="js/bar-to-line.js"></script>
 </body>
 </html>
